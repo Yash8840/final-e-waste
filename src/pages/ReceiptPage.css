@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,500;0,600;1,300&display=swap');
+.bg{
+  background-color: #1B5F3A;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: 'Raleway', sans-serif;
+  
+}
+.image{
+  height: 80px;
+  margin-left: 50px;
+  padding-top: 10px;
+}
+.list{
+  list-style-type: none;
+  margin-top: -60px;
+  margin-left: 500px;
+  display: flex;
+  width: 90%;
+  padding-top: 10px;
+}
+.list li{
+  display: inline-block;
+  padding-inline: 45px;
+  font-size: 20px;
+  color: white;
+}
+.tableback{
+  background-image: url(../assets/receiptbg-removebg-preview.png);
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* border: none; */
+}
+.l1{
+  text-decoration: none;
+  color: white;
+}
+.rec{
+  margin-left: 80px;
+  padding-top: 1rem;
+  padding-left: 9rem;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+  color: white;
+  display: flex ;
+  position: relative;
+  justify-content:flex-start;
+}
+.table, th, td{
+  border: 2px solid;
+  height: 100px;
+  width: 200px;   
+}
+.tabfirst{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tab{
+  border-collapse: collapse;
+  background-color: #C8C8C8;
+  text-align: center;
+  margin-left:100px ;
+}
+.item{
+  margin-left: 20px;
+  width: 80%;
+  border: 1px;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+}
+.receipt{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  width: 80%;
+  border: 1px;
+  border-radius: 10px;
+  background-color: #D9D9D9;
+  text-align: center;    
+  cursor: pointer;
+}
+.selection{
+  margin-right: 10px;
+}
+label{
+  cursor: pointer;
+}
+.verified{
+  margin-left: 20px;
+  width: 80%;
+  border: 1px;
+  border-radius: 10px;
+  background-color: #D9D9D9;   
+  padding: 10px;     
+}
+.add
+{
+  background-color: #1B5F3A;
+  margin-left: 20px;
+  width: 80%;
+  border: 1px;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 10px;
+}

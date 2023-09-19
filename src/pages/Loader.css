@@ -1,0 +1,23 @@
+body{
+  overflow: hidden;
+}
+.obstacle{
+  background-image: url('../assets//van-removebg-preview.png');
+  width: 22rem;
+  height: 15rem;
+  background-size: cover;
+  position: absolute;
+}
+
+.obstacleAni{
+animation: obstacleAni 5s linear infinite;
+}
+
+@keyframes obstacleAni{
+  0%{
+      left:-10vw;
+  }
+  100%{
+      left: 100vw;
+  }
+}

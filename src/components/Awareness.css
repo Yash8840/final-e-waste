@@ -1,0 +1,27 @@
+.awarenessContainer {
+  /* width: 100vw; */
+  height: 100vh;
+  background-image: url("../assets/awareness.png");
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+}
+.cont1 {
+  display: flex;
+  height: 65%;
+}
+.cont2 {
+  height: 35%;
+}
+.swiperCont {
+  width: 55%;
+  /* border: 2px solid black; */
+}
+.videoCont {
+  width: 45%;
+  /* border: 2px solid black; */
+}
