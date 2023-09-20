@@ -26,6 +26,15 @@ const SelectState = (props) => {
     <option value="Assam">Assam</option>
     <option value="Maharashtra">Maharashtra</option>
     <option value="Madhya Pradesh">Madhya Pradesh</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Punjab">Punjab</option>
+    <option value="Haryana">Haryana</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Bihar">Bihar</option>
+    <option value="Himachal Pradesh">Himachal Pradesh</option>
+    <option value="Uttarakhand">Uttarakhand</option>
+    <option value="Kerala">Kerala</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
   </select>
     </div>
     </>

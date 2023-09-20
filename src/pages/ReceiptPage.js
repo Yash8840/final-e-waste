@@ -80,10 +80,11 @@ function ReceiptPage() {
             await updateDoc(doc(db,"verification",currentUser.uid),{
               receiptURL : downloadURL
             }) 
+            setIsLoading(false);
           });
         }
       );
-      setIsLoading(false);
+      
     } catch (error) {
       console.log("bhaari error hogayi..");
       setError(true);
@@ -96,25 +97,21 @@ function ReceiptPage() {
         <img src={logo} className="image" />
         <ul className="list">
           <li>
-            <a  className="l1" onClick={() => navigate(-1)} style={{cursor:'pointer'}}>
+            <NavLink to='/'  className="l1" onClick={() => navigate(-1)} style={{cursor:'pointer', fontWeight:'bold'}}>
               Home
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="l1">
-              About Us
-            </a>
+            <NavLink to='/redeemVouchers' className="l1" style={{fontWeight:'bold'}}>
+              Vouchers
+            </NavLink>
           </li>
           <li>
-            <a href="#" className="l1">
+            <a href="#" className="l1" style={{fontWeight:'bold'}}>
               Contact Us
             </a>
           </li>
-          <li>
-            <a href="#" className="l1">
-              LogIn/SignUp
-            </a>
-          </li>
+          
           <li>
             <div className="flex gap-[0.6rem] pr-[2rem]">
               <img src={search} alt="" className="w-[1.5rem] h-[1.5rem]" />
@@ -158,7 +155,8 @@ function ReceiptPage() {
                 <div className="receipt">
                   <input style={{ display: "none" }}type="file" id="file" />
                   <label htmlFor="file">
-                    ADD RECEIPT
+                    {!loading && 'ADD RECEIPT'}
+                    {loading && 'ADDING...'}
                     <span className="material-symbols-outlined">
                       <AddIcon />
                     </span>
@@ -166,7 +164,7 @@ function ReceiptPage() {
                 </div>
               </td>
               <td>
-                <div className="verified">{data && data.isVerified ? 'Verified' : 'Add your receipt'}</div>
+                <div className={data && data.isVerified ? "greenwa" : "verified"}>{data && data.isVerified ? 'Verified' : 'Add your receipt'}</div>
               </td>
               <td>
                 <div className="add" onClick={addHandler}>

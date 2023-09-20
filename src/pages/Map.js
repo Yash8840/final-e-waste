@@ -27,7 +27,7 @@ function Map() {
   console.log(stateData);
 
   const customIcon = new Icon({
-    iconUrl: require("../assets/renewable.png"),
+    iconUrl: require("../assets/recycle.png"),
     iconSize: [38, 38],
   });
 

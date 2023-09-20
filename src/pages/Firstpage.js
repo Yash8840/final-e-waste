@@ -7,7 +7,7 @@ import AuthContext from "../Context/AuthContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { NavLink } from "react-router-dom";
-import logo from '../assets/logo-black.png';
+import logo from '../assets/logo.png';
 function Firstpage() {
   const modalCtx = useContext(ModalContext);
   const openHandler = () => {
@@ -28,7 +28,7 @@ function Firstpage() {
     <div className="bg-[#1B5F3A] shadow-4xl shadow-black h-[100vh]">
       <div className="text-[#E1E1E1]  flex justify-between gap-[4px] mx-auto w-[95%] py-[1rem] text-center items-center">
         <img src={logo} style={{height:'74px'}}  className=" font-[Merriweather]"/>
-        <div className="flex justify-between text-center items-center text-[#ACACAC] gap-[5rem] ">
+        <div className="flex justify-between text-center items-center text-[#ffffff] gap-[5rem] ">
           <p className="text-[1.1rem]">Home</p>
           <NavLink className="text-[1.1rem]" to="/redeemVouchers">
             <span onClick={redeemHandler}>Redeem Vouchers</span>

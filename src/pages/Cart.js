@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './Cart.css'
 import logo from '../assets/logo.png'
 import search from './search.png'
@@ -6,19 +6,27 @@ import search from './search.png'
  import image1 from '../assets/five.jpg'
  import image2 from '../assets/eight.jpg'
  import image3 from '../assets/four.jpg'
+import VoucherContext from '../Context/VoucherContext'
+import { NavLink, useNavigate } from 'react-router-dom'
 function Cart() {
+    const voucherCtx = useContext(VoucherContext);
+    console.log(voucherCtx);
+    const navigate = useNavigate();
+    const [claimed, setIsClaimed] = useState(false);
+    
   return (
-    <div className="bg">
+    <div className='cartContainer'>
+    <div className="bgBig">
 
 
         <div>
             <img src={logo} className="image"/>
             <ul className="list">
                 <li>
-                    <a href="#" className="l1">Home</a>
+                    <NavLink to="/" className="l1">Home</NavLink>
                 </li>
                 <li>
-                    <a href="#" className="l1">About Us</a>
+                    <NavLink to="/redeemVouchers" className="l1">Add Vouchers</NavLink>
                 </li>
                 <li>
                     <a href="#" className="l1">Contact Us</a>
@@ -41,6 +49,7 @@ function Cart() {
             </h1>
         </div>
         <div className='tabfirst'>
+            <div >
             <table className="tab  shadow-xl shadow-black">
                 <tr>
                     <th style={{padding:'20px'}}>
@@ -59,18 +68,20 @@ function Cart() {
                         Claim
                     </th>
                 </tr>
-                <tr>
+                {voucherCtx.redeemedVouchers && voucherCtx.redeemedVouchers.length !==0 ? (voucherCtx.redeemedVouchers.map((item,idx)=>{
+                    return (
+                        <tr>
                     <td>
-                        1.
+                        {idx+1}
                     </td>
                     <td>
                         <div className="item flex justify-center">
-                            <img src={image1} alt="" className='w-[40%] h-[20%] my-[0.3rem]' />
+                            <img src={item.imgUrl} alt="" className='w-[40%] h-[20%] my-[0.3rem]' />
                         </div>
                     </td>
                     <td>
                         <div className="receipt">
-                        2000 points
+                        {item.points}
                             
                         </div>
                     </td>
@@ -81,64 +92,45 @@ function Cart() {
                     </td>
                     <td >
                         <div className="add">
-                        Claim
+                        <span>Claim</span>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        2.
-                    </td>
-                    <td>
-                        <div className="item flex justify-center ">
-                           <img src={image2} alt="" className='w-[40%] h-[20%] my-[0.3rem]' />
-                        </div>
-                    </td>
-                    <td>
-                        <div className="receipt">
-                        5000 points
-                          
-                        </div>
-                    </td>
-                    <td>
-                        <div className="verified">
-                        06/09/2023
-                        </div>
-                    </td>
-                    <td>
-                        <div className="add">
-                            Claim
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        3.
-                    </td>
-                    <td>
-                        <div className="item flex justify-center">
-                           <img src={image3} alt="" className='w-[40%] h-[20%] my-[0.3rem] '/>
-                        </div>
-                    </td>
-                    <td>
-                        <div className="receipt">
-                        6000 points
-                           
-                        </div>
-                    </td>
-                    <td>
-                        <div className="verified">
-                        08/11/2023
-                        </div>
-                    </td>
-                    <td>
-                        <div className="add">
-                          Claim
-                        </div>
-                    </td>
-                </tr>
+                    )})): (
+                        <tr>
+                        <td>
+                            {1}
+                        </td>
+                        <td>
+                            <div className="item flex justify-center">
+                                {/* <img src={} alt="" className='w-[40%] h-[20%] my-[0.3rem]' /> */}
+                                <NavLink onClick={() => navigate(-1)} style={{color:'blue', textDecoration:'underline', cursor:'pointer'}}>Add Vouchers Now!</NavLink>
+                            </div>
+                        </td>
+                        <td>
+                            <div className="receipt">
+                            ----
+                                
+                            </div>
+                        </td>
+                        <td>
+                            <div className="verified">
+                            ----
+                            </div>
+                        </td>
+                        <td >
+                            <div className="add">
+                            ----
+                            </div>
+                        </td>
+                    </tr>
+                    )}
+                
+                
                 
             </table>
+            </div>
+        </div>
         </div>
         </div>
         </div>

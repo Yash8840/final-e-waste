@@ -13,8 +13,15 @@ import 'react-toastify/dist/ReactToastify.css';
 const Vouchers = () => {
   const authCtx = useContext(AuthContext);
   const [data, setData] = useState(null);
+  const [userSelectedPoints, setUserSelectedPoints] = useState(0);
   const [points, setPoints] = useState(0);
   const navigate = useNavigate();
+
+  const showToastMessage = () => {
+    toast.success(`${userSelectedPoints} points redeemed successfully!`, {
+        position: toast.POSITION.TOP_RIGHT
+    });
+};
 
   useEffect(() => {
     // we'll use realtime updation using "useSnapshot"
@@ -24,6 +31,7 @@ const Vouchers = () => {
         (doc) => {
           console.log("Current data: ", doc.data());
           setData(doc.data());
+          
         }
       );
       return () => {
@@ -35,15 +43,22 @@ const Vouchers = () => {
   }, [authCtx.currentUser.uid]);
 
   const selectedPointsHandler = (points)=>{
-    setPoints(points)
+    setUserSelectedPoints(points);
   }
 
   const redeemVoucher = async()=>{
+    if(userSelectedPoints >= data.credits){
+      toast.error("Oops! You don't have enough credits! Recycle Now to get some !", {
+        position: toast.POSITION.TOP_CENTER
+    });
+    return;
+    }
     const docRef = doc(db, 'verification', authCtx.currentUser.uid)
     await updateDoc(docRef, {
-      credits: increment(points * -1),
+      credits: increment(+userSelectedPoints * -1),
   });
-  setPoints(0)
+  setPoints(0);
+  showToastMessage();
   }
 
   return (
@@ -58,10 +73,11 @@ const Vouchers = () => {
           <VoucherSwiper selectedPoints={selectedPointsHandler}/>
         </div>
         <div className={classes.redeemBox}>
-          <span style={{color:'#868686', fontWeight:'300'}}>Amount of Points to redeem - {points}</span>
+          <span style={{color:'#868686', fontWeight:'300'}}>Amount of Points to redeem - {userSelectedPoints}</span>
           <button onClick={redeemVoucher}>Redeem Now!</button>
         </div>
       </div>
+      <ToastContainer />
     </div>
   )
 }
